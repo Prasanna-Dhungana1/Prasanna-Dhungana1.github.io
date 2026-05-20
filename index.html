@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Prasanna Dhungana — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --cream: #F5F2EC;
+    --ink: #1A1A18;
+    --gold: #8B7A3D;
+    --gold-light: #C4A84F;
+    --muted: #6B6860;
+    --border: rgba(26,26,24,0.12);
+    --card-bg: #FDFBF7;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(245,242,236,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 8rem 4rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero-name em { font-style: italic; color: var(--gold); }
+  .hero-sub {
+    max-width: 480px;
+    margin-top: 2rem;
+    font-size: 1rem; color: var(--muted);
+    opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-cta {
+    margin-top: 3rem;
+    display: flex; gap: 1rem; align-items: center;
+    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .btn-primary {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: var(--ink); color: var(--cream);
+    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--gold); transform: translateY(-2px); }
+  .btn-ghost {
+    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+  .hero-number {
+    position: absolute; right: 4rem; bottom: 5rem;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(8rem, 20vw, 18rem);
+    color: rgba(139,122,61,0.07);
+    line-height: 1; user-select: none;
+    opacity: 0; animation: fadeIn 1.2s 1s forwards;
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 3rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::after {
+    content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--gold-light);
+  }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400; line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: start; margin-top: 2rem;
+  }
+  .about-text p { color: var(--muted); margin-bottom: 1rem; }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  }
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+  }
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem; color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.75rem; color: var(--muted); margin-top: 0.35rem; letter-spacing: 0.05em; }
+
+  /* TECH */
+  .tech-section { background: var(--ink); color: var(--cream); }
+  .tech-section .section-label { color: var(--gold-light); }
+  .tech-section .section-label::after { background: var(--gold); }
+  .tech-section h2 { color: var(--cream); }
+  .tech-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem;
+  }
+  .tech-group-title {
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 1.25rem;
+  }
+  .tech-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .pill {
+    font-size: 0.78rem; padding: 0.35rem 0.9rem;
+    border: 1px solid rgba(196,168,79,0.3);
+    color: rgba(245,242,236,0.7);
+    transition: border-color 0.2s, color 0.2s;
+    cursor: default;
+  }
+  .pill:hover { border-color: var(--gold-light); color: var(--cream); }
+
+  /* PROJECT */
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    margin-top: 2.5rem;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 2rem; align-items: start;
+    transition: box-shadow 0.25s, transform 0.25s;
+    cursor: default;
+  }
+  .project-card:hover {
+    box-shadow: 0 12px 40px rgba(26,26,24,0.08);
+    transform: translateY(-4px);
+  }
+  .project-tag {
+    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.75rem;
+  }
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem; font-weight: 400; margin-bottom: 0.75rem;
+  }
+  .project-desc { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.25rem; }
+  .project-techs { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tech-tag {
+    font-size: 0.7rem; padding: 0.2rem 0.65rem;
+    background: rgba(139,122,61,0.1); color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+  .project-meta { text-align: right; }
+  .project-year {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem; color: rgba(139,122,61,0.15); line-height: 1;
+  }
+
+  /* ACHIEVEMENTS */
+  .achievements-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem; margin-top: 2.5rem;
+  }
+  .ach-card {
+    border: 1px solid var(--border);
+    padding: 1.75rem;
+    background: var(--card-bg);
+    transition: border-color 0.2s;
+  }
+  .ach-card:hover { border-color: var(--gold-light); }
+  .ach-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .ach-title { font-weight: 500; margin-bottom: 0.25rem; font-size: 0.95rem; }
+  .ach-org { font-size: 0.8rem; color: var(--gold); margin-bottom: 0.25rem; }
+  .ach-year { font-size: 0.75rem; color: var(--muted); }
+
+  /* ACTIVITIES */
+  .activities-list { margin-top: 2rem; }
+  .activity-row {
+    display: flex; align-items: baseline;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+    gap: 2rem;
+  }
+  .activity-row:first-child { border-top: 1px solid var(--border); }
+  .activity-name { font-weight: 500; flex: 1; }
+  .activity-role { font-size: 0.85rem; color: var(--gold); flex: 1; }
+  .activity-years { font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
+
+  /* RESEARCH */
+  .research-card {
+    background: var(--card-bg);
+    border-left: 3px solid var(--gold);
+    padding: 2rem 2rem 2rem 2.5rem;
+    margin-top: 2rem;
+  }
+  .research-title { font-family: 'DM Serif Display', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 0.5rem; }
+  .research-meta { font-size: 0.8rem; color: var(--gold); margin-bottom: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .research-desc { color: var(--muted); font-size: 0.92rem; }
+
+  /* VOLUNTEER */
+  .volunteer-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem; margin-top: 2rem;
+  }
+  .vol-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+  }
+  .vol-org { font-weight: 500; margin-bottom: 0.35rem; }
+  .vol-years { font-size: 0.75rem; color: var(--gold); margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+  .vol-desc { font-size: 0.85rem; color: var(--muted); }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--ink); color: var(--cream);
+    text-align: center;
+  }
+  .contact-section h2 { color: var(--cream); }
+  .contact-section .section-label { color: var(--gold-light); justify-content: center; }
+  .contact-section .section-label::after, .contact-section .section-label::before {
+    content: ''; flex: none; width: 40px; height: 1px; background: var(--gold);
+  }
+  .contact-links {
+    display: flex; justify-content: center; gap: 2rem; margin-top: 3rem; flex-wrap: wrap;
+  }
+  .contact-link {
+    display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+    color: var(--cream); text-decoration: none;
+    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 1.5rem 2rem;
+    border: 1px solid rgba(245,242,236,0.15);
+    transition: border-color 0.2s, background 0.2s;
+    min-width: 160px;
+  }
+  .contact-link:hover { border-color: var(--gold-light); background: rgba(196,168,79,0.08); }
+  .contact-link-icon { font-size: 1.4rem; }
+  .contact-tagline {
+    color: rgba(245,242,236,0.4); font-size: 0.85rem; margin-top: 1.5rem;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 2rem 4rem;
+    font-size: 0.75rem; color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.65s, transform 0.65s;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 6rem 1.5rem 4rem; }
+    .about-grid, .tech-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .project-card { grid-template-columns: 1fr; }
+    .hero-number { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Prasanna Dhungana</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <p class="hero-eyebrow">Student Developer · Future Business Leader · Researcher</p>
+  <h1 class="hero-name">Prasanna<br><em>Dhungana</em></h1>
+  <p class="hero-sub">High-achieving student at Manassas Park High School &amp; the Governor's School @ Innovation Park, building real software and pursuing research that matters.</p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn-primary">View My Work</a>
+    <a href="#contact" class="btn-ghost">Get In Touch</a>
+  </div>
+  <div class="hero-number" aria-hidden="true">4.25</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label reveal">Background</p>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <h2>Driven by curiosity,<br>grounded in results.</h2>
+      <p>I'm a graduating senior with a 4.25 GPA, enrolled in both Manassas Park High School and the Governor's School @ Innovation Park's Chemistry Strand. I combine rigorous academics with hands-on experience in software development, leadership, and research.</p>
+      <p>From building full-stack web applications to leading my FBLA chapter to placing in state competitions, I bring the same intensity to everything I do — and I'm just getting started in tech.</p>
+    </div>
+    <div class="about-stats reveal">
+      <div class="stat-card">
+        <div class="stat-number">4.25</div>
+        <div class="stat-label">Cumulative GPA</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">4+</div>
+        <div class="stat-label">Years of leadership</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">2×</div>
+        <div class="stat-label">Regional FBLA champion</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Clubs &amp; orgs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section class="tech-section" id="stack">
+  <p class="section-label reveal">Skills</p>
+  <h2 class="reveal">Tech Stack</h2>
+  <div class="tech-grid">
+    <div class="reveal">
+      <p class="tech-group-title">Frontend</p>
+      <div class="tech-pills">
+        <span class="pill">React</span>
+        <span class="pill">TypeScript</span>
+        <span class="pill">Redux Toolkit</span>
+        <span class="pill">Tailwind CSS</span>
+        <span class="pill">Material UI</span>
+        <span class="pill">React Router</span>
+        <span class="pill">TinyMCE</span>
+        <span class="pill">Vite</span>
+        <span class="pill">Figma</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="tech-group-title">Backend &amp; Database</p>
+      <div class="tech-pills">
+        <span class="pill">Node.js</span>
+        <span class="pill">Express</span>
+        <span class="pill">MongoDB</span>
+        <span class="pill">Mongoose</span>
+        <span class="pill">Redis</span>
+        <span class="pill">Bcrypt</span>
+        <span class="pill">Nodemailer</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label reveal">Work</p>
+  <h2 class="reveal">Featured Projects</h2>
+
+  <div class="project-card reveal">
+    <div>
+      <p class="project-tag">Full-Stack Web Application</p>
+      <h3 class="project-title">MP Jobs</h3>
+      <p class="project-desc">A full-stack job board platform designed to connect job seekers and employers. Features include secure authentication, rich text job postings, email notifications, and Redis-powered caching for performance. Built end-to-end from database schema to UI.</p>
+      <div class="project-techs">
+        <span class="tech-tag">React</span>
+        <span class="tech-tag">TypeScript</span>
+        <span class="tech-tag">Node.js</span>
+        <span class="tech-tag">MongoDB</span>
+        <span class="tech-tag">Redis</span>
+        <span class="tech-tag">Tailwind CSS</span>
+        <span class="tech-tag">Express</span>
+      </div>
+    </div>
+    <div class="project-meta">
+      <div class="project-year">24</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <p class="section-label reveal">Recognition</p>
+  <h2 class="reveal">Awards &amp; Honors</h2>
+  <div class="achievements-grid">
+    <div class="ach-card reveal">
+      <div class="ach-icon">🥇</div>
+      <div class="ach-title">1st Place — Regionals</div>
+      <div class="ach-org">Future Business Leaders of America</div>
+      <div class="ach-year">2023 &amp; 2024</div>
+    </div>
+    <div class="ach-card reveal">
+      <div class="ach-icon">🏅</div>
+      <div class="ach-title">5th Place — States</div>
+      <div class="ach-org">Future Business Leaders of America</div>
+      <div class="ach-year">2024</div>
+    </div>
+    <div class="ach-card reveal">
+      <div class="ach-icon">📜</div>
+      <div class="ach-title">National Honor Society</div>
+      <div class="ach-org">Manassas Park High School</div>
+      <div class="ach-year">2024 – Present</div>
+    </div>
+    <div class="ach-card reveal">
+      <div class="ach-icon">⭐</div>
+      <div class="ach-title">Superintendent's Honor Roll</div>
+      <div class="ach-org">Manassas Park City Schools</div>
+      <div class="ach-year">2021 – Present</div>
+    </div>
+    <div class="ach-card reveal">
+      <div class="ach-icon">🔵</div>
+      <div class="ach-title">National BETA Club</div>
+      <div class="ach-org">Manassas Park High School</div>
+      <div class="ach-year">2023 – Present</div>
+    </div>
+    <div class="ach-card reveal">
+      <div class="ach-icon">🎓</div>
+      <div class="ach-title">Governor's School @ Innovation Park</div>
+      <div class="ach-org">Chemistry Strand — Selective Admissions</div>
+      <div class="ach-year">2024 – 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section id="activities">
+  <p class="section-label reveal">Involvement</p>
+  <h2 class="reveal">Extracurriculars &amp; Leadership</h2>
+  <div class="activities-list">
+    <div class="activity-row reveal">
+      <span class="activity-name">Future Business Leaders of America</span>
+      <span class="activity-role">Secretary (2025–Present) · Parliamentarian (2024–2025)</span>
+      <span class="activity-years">2023 – Present</span>
+    </div>
+    <div class="activity-row reveal">
+      <span class="activity-name">National Honor Society</span>
+      <span class="activity-role">Member</span>
+      <span class="activity-years">2024 – Present</span>
+    </div>
+    <div class="activity-row reveal">
+      <span class="activity-name">National BETA Club</span>
+      <span class="activity-role">Member</span>
+      <span class="activity-years">2023 – Present</span>
+    </div>
+    <div class="activity-row reveal">
+      <span class="activity-name">Robotics Team</span>
+      <span class="activity-role">Member</span>
+      <span class="activity-years">2024 – Present</span>
+    </div>
+    <div class="activity-row reveal">
+      <span class="activity-name">Academic Team</span>
+      <span class="activity-role">Member</span>
+      <span class="activity-years">2023 – Present</span>
+    </div>
+    <div class="activity-row reveal">
+      <span class="activity-name">Debate Team</span>
+      <span class="activity-role">Member</span>
+      <span class="activity-years">2022 – 2024</span>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <p class="section-label reveal">Science</p>
+  <h2 class="reveal">Research</h2>
+  <div class="research-card reveal">
+    <p class="research-meta">September 2024 – Present · Governor's School @ Innovation Park</p>
+    <h3 class="research-title">Removing Microplastics from Water Through Filtration and Coagulation</h3>
+    <p class="research-desc">Investigating practical, scalable methods to filter microplastic particles from water sources using coagulation techniques. This research contributes to environmental sustainability science and explores real-world applications for clean water access.</p>
+  </div>
+</section>
+
+<!-- VOLUNTEER -->
+<section id="volunteer">
+  <p class="section-label reveal">Community</p>
+  <h2 class="reveal">Volunteer Experience</h2>
+  <div class="volunteer-grid">
+    <div class="vol-card reveal">
+      <div class="vol-org">Manassas Park City Library</div>
+      <div class="vol-years">2023 – 2024</div>
+      <div class="vol-desc">Shelf reading, book care, and general patron assistance.</div>
+    </div>
+    <div class="vol-card reveal">
+      <div class="vol-org">MPHS After-School Activities Program</div>
+      <div class="vol-years">2024 – Present</div>
+      <div class="vol-desc">Supported family markets and concession stands at school sports events.</div>
+    </div>
+    <div class="vol-card reveal">
+      <div class="vol-org">Habitat for Humanity, Virginia</div>
+      <div class="vol-years">2025 – Present</div>
+      <div class="vol-desc">Furniture handling and customer care at the ReShop facility.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <p class="section-label reveal">Let's connect</p>
+  <h2 class="reveal">Get In Touch</h2>
+  <p class="contact-tagline reveal">Open to internships, collaborations, and conversations about tech.</p>
+  <div class="contact-links reveal">
+    <a class="contact-link" href="mailto:prasanna.dhungana81@gmail.com">
+      <span class="contact-link-icon">✉</span>
+      Email
+    </a>
+    <a class="contact-link" href="https://www.linkedin.com/in/prasanna-dhungana-4a1209309/" target="_blank" rel="noopener">
+      <span class="contact-link-icon">in</span>
+      LinkedIn
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Prasanna Dhungana · Manassas Park, VA</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
