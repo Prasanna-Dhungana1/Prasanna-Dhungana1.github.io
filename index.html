@@ -6,20 +6,7 @@
 <title>Prasanna Dhungana — Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-  .hero-photo 
   :root {
-  position: absolute;
-  right: 4rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 120px;
-  height: 180px;
-  object-fit: cover;
-  object-position: top;
-  border: 1px solid var(--border);
-  opacity: 0;
-  animation: fadeIn 1s 0.6s forwards;
-}
     --cream: #F5F2EC;
     --ink: #1A1A18;
     --gold: #8B7A3D;
@@ -28,11 +15,25 @@
     --border: rgba(26,26,24,0.12);
     --card-bg: #FDFBF7;
   }
-
+ 
+  .hero-photo {
+    position: absolute;
+    right: 4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 280px;
+    height: 340px;
+    object-fit: cover;
+    object-position: top center;
+    border: 1px solid var(--border);
+    opacity: 0;
+    animation: fadeIn 1s 0.6s forwards;
+  }
+ 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   html { scroll-behavior: smooth; }
-
+ 
   body {
     background: var(--cream);
     color: var(--ink);
@@ -41,7 +42,7 @@
     line-height: 1.7;
     overflow-x: hidden;
   }
-
+ 
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -65,7 +66,7 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--ink); }
-
+ 
   /* HERO */
   .hero {
     min-height: 100vh;
@@ -116,7 +117,7 @@
     transition: color 0.2s, border-color 0.2s;
   }
   .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
-
+ 
   .hero-number {
     position: absolute; right: 4rem; bottom: 5rem;
     font-family: 'DM Serif Display', serif;
@@ -125,7 +126,7 @@
     line-height: 1; user-select: none;
     opacity: 0; animation: fadeIn 1.2s 1s forwards;
   }
-
+ 
   /* SECTIONS */
   section { padding: 6rem 4rem; }
   .section-label {
@@ -142,7 +143,7 @@
     font-weight: 400; line-height: 1.15;
     margin-bottom: 1rem;
   }
-
+ 
   /* ABOUT */
   .about-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
@@ -163,7 +164,7 @@
     line-height: 1;
   }
   .stat-label { font-size: 0.75rem; color: var(--muted); margin-top: 0.35rem; letter-spacing: 0.05em; }
-
+ 
   /* TECH */
   .tech-section { background: var(--ink); color: var(--cream); }
   .tech-section .section-label { color: var(--gold-light); }
@@ -185,7 +186,7 @@
     cursor: default;
   }
   .pill:hover { border-color: var(--gold-light); color: var(--cream); }
-
+ 
   /* PROJECT */
   .project-card {
     background: var(--card-bg);
@@ -221,7 +222,7 @@
     font-family: 'DM Serif Display', serif;
     font-size: 3rem; color: rgba(139,122,61,0.15); line-height: 1;
   }
-
+ 
   /* ACHIEVEMENTS */
   .achievements-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -238,7 +239,7 @@
   .ach-title { font-weight: 500; margin-bottom: 0.25rem; font-size: 0.95rem; }
   .ach-org { font-size: 0.8rem; color: var(--gold); margin-bottom: 0.25rem; }
   .ach-year { font-size: 0.75rem; color: var(--muted); }
-
+ 
   /* ACTIVITIES */
   .activities-list { margin-top: 2rem; }
   .activity-row {
@@ -251,7 +252,7 @@
   .activity-name { font-weight: 500; flex: 1; }
   .activity-role { font-size: 0.85rem; color: var(--gold); flex: 1; }
   .activity-years { font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
-
+ 
   /* RESEARCH */
   .research-card {
     background: var(--card-bg);
@@ -262,7 +263,7 @@
   .research-title { font-family: 'DM Serif Display', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 0.5rem; }
   .research-meta { font-size: 0.8rem; color: var(--gold); margin-bottom: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
   .research-desc { color: var(--muted); font-size: 0.92rem; }
-
+ 
   /* VOLUNTEER */
   .volunteer-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -276,7 +277,7 @@
   .vol-org { font-weight: 500; margin-bottom: 0.35rem; }
   .vol-years { font-size: 0.75rem; color: var(--gold); margin-bottom: 0.5rem; letter-spacing: 0.05em; }
   .vol-desc { font-size: 0.85rem; color: var(--muted); }
-
+ 
   /* CONTACT */
   .contact-section {
     background: var(--ink); color: var(--cream);
@@ -304,14 +305,14 @@
   .contact-tagline {
     color: rgba(245,242,236,0.4); font-size: 0.85rem; margin-top: 1.5rem;
   }
-
+ 
   /* FOOTER */
   footer {
     text-align: center; padding: 2rem 4rem;
     font-size: 0.75rem; color: var(--muted);
     border-top: 1px solid var(--border);
   }
-
+ 
   /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -325,7 +326,7 @@
     transition: opacity 0.65s, transform 0.65s;
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
-
+ 
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
@@ -339,7 +340,7 @@
 </style>
 </head>
 <body>
-
+ 
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">Prasanna Dhungana</a>
@@ -351,7 +352,7 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
-
+ 
 <!-- HERO -->
 <section class="hero" id="home">
   <p class="hero-eyebrow">Student Developer · Future Business Leader · Researcher</p>
@@ -364,7 +365,7 @@
   <img src="photo.jpg" alt="Prasanna Dhungana" class="here-photo" />
   <div class="hero-number" aria-hidden="true">4.29</div>
 </section>
-
+ 
 <!-- ABOUT -->
 <section id="about">
   <p class="section-label reveal">Background</p>
@@ -394,7 +395,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- TECH STACK -->
 <section class="tech-section" id="stack">
   <p class="section-label reveal">Skills</p>
@@ -428,12 +429,12 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- PROJECTS -->
 <section id="projects">
   <p class="section-label reveal">Work</p>
   <h2 class="reveal">Featured Projects</h2>
-
+ 
   <div class="project-card reveal">
     <div>
       <p class="project-tag">Full-Stack Web Application</p>
@@ -454,7 +455,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ACHIEVEMENTS -->
 <section id="achievements">
   <p class="section-label reveal">Recognition</p>
@@ -498,7 +499,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ACTIVITIES -->
 <section id="activities">
   <p class="section-label reveal">Involvement</p>
@@ -536,7 +537,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- RESEARCH -->
 <section id="research">
   <p class="section-label reveal">Science</p>
@@ -551,7 +552,7 @@
     <p class="research-desc">Conducted a comparative AP Research study on vehicle CO₂ emissions trends across multiple automotive manufacturers, analyzing how technological advancements and emission-control systems help reduce emissions while maintaining vehicle performance.</p>
   </div>
 </section>
-
+ 
 <!-- VOLUNTEER -->
 <section id="volunteer">
   <p class="section-label reveal">Community</p>
@@ -574,7 +575,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
   <p class="section-label reveal">Let's connect</p>
@@ -591,11 +592,11 @@
     </a>
   </div>
 </section>
-
+ 
 <footer>
   <p>© 2026 Prasanna Dhungana · Manassas Park, VA</p>
 </footer>
-
+ 
 <script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -605,7 +606,7 @@
       }
     });
   }, { threshold: 0.12 });
-
+ 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
