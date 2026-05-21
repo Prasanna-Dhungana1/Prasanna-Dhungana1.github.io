@@ -17,21 +17,18 @@
   }
  
   .hero-photo {
-    position: absolute;
-    right: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 120px !important;
-    height: 150px !important;
-    max-width: 180px;
-    max-height: 240px;
-    min-width: 0;
+    position: static;
+    width: 280px;
+    height: 340px;
+    max-width: 280px;
+    max-height: 340px;
     object-fit: cover;
     object-position: top center;
     border: 1px solid var(--border);
     display: block;
+    margin-bottom: 2rem;
     opacity: 0;
-    animation: fadeIn 1s 0.6s forwards;
+    animation: fadeIn 1s 0.3s forwards;
   }
  
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -339,7 +336,7 @@
     .about-grid, .tech-grid { grid-template-columns: 1fr; gap: 2rem; }
     .project-card { grid-template-columns: 1fr; }
     .hero-number { display: none; }
-    .hero-photo { display: none; }
+    .hero-photo { width: 160px; height: 200px; max-width: 160px; max-height: 200px; }
   }
 </style>
 </head>
@@ -359,6 +356,7 @@
  
 <!-- HERO -->
 <section class="hero" id="home">
+  <img src="photo.jpg" alt="Prasanna Dhungana" class="hero-photo" width="280" height="340" />
   <p class="hero-eyebrow">Student Developer · Future Business Leader · Researcher</p>
   <h1 class="hero-name">Prasanna<br><em>Dhungana</em></h1>
   <p class="hero-sub">High-achieving student at Manassas Park High School &amp; the Governor's School @ Innovation Park, building real software and pursuing research that matters.</p>
@@ -366,7 +364,6 @@
     <a href="#projects" class="btn-primary">View My Work</a>
     <a href="#contact" class="btn-ghost">Get In Touch</a>
   </div>
-  <img src="photo.jpg" alt="Prasanna Dhungana" class="hero-photo" width="120" height="150" />
   <div class="hero-number" aria-hidden="true">4.29</div>
 </section>
  
@@ -615,3 +612,4 @@
 </script>
 </body>
 </html>
+ 
